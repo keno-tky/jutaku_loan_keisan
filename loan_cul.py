@@ -374,18 +374,18 @@ def main():
             last_12[col] = last_12[col].apply(lambda x: f"¥{x:,.0f}")
         st.dataframe(last_12, use_container_width=True)
     
-    # CSVダウンロード
-    st.subheader("データダウンロード")
+    # # CSVダウンロード
+    # st.subheader("データダウンロード")
     
-    # フォーマットされていないデータでCSV作成
-    csv_data = schedule_df.to_csv(index=False, encoding='utf-8-sig')
-    bonus_text = f"_賞与{bonus_principal//10000}万円" if use_bonus else ""
-    st.download_button(
-        label="返済予定表をCSVでダウンロード",
-        data=csv_data,
-        file_name=f"返済予定表_{principal//10000}万円_{annual_rate}%_{years}年{bonus_text}.csv",
-        mime="text/csv"
-    )
+    # # フォーマットされていないデータでCSV作成
+    # csv_data = schedule_df.to_csv(index=False, encoding='utf-8-sig')
+    # bonus_text = f"_賞与{bonus_principal//10000}万円" if use_bonus else ""
+    # st.download_button(
+    #     label="返済予定表をCSVでダウンロード",
+    #     data=csv_data,
+    #     file_name=f"返済予定表_{principal//10000}万円_{annual_rate}%_{years}年{bonus_text}.csv",
+    #     mime="text/csv"
+    # )
     
     # 計算式の説明
     with st.expander("計算式について"):
