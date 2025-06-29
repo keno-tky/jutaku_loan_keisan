@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
+# import plotly.graph_objects as go
+# from plotly.subplots import make_subplots
 
 def calculate_monthly_payment(principal, annual_rate, years, bonus_principal=0, bonus_frequency=2):
     """
@@ -254,80 +254,80 @@ def main():
     # 返済予定表の作成
     schedule_df = calculate_amortization_schedule(principal, annual_rate, years, bonus_principal, bonus_frequency)
     
-    # グラフ表示
-    st.header("返済推移グラフ")
+    # # グラフ表示
+    # st.header("返済推移グラフ")
     
-    # 元金と利息の推移グラフ
-    fig = make_subplots(
-        rows=2, cols=1,
-        subplot_titles=('月々の元金・利息推移', '残高推移'),
-        vertical_spacing=0.1
-    )
+    # # 元金と利息の推移グラフ
+    # fig = make_subplots(
+    #     rows=2, cols=1,
+    #     subplot_titles=('月々の元金・利息推移', '残高推移'),
+    #     vertical_spacing=0.1
+    # )
     
-    # 元金と利息の積み上げグラフ
-    fig.add_trace(
-        go.Scatter(
-            x=schedule_df['回数'],
-            y=schedule_df['元金'],
-            mode='lines',
-            name='元金',
-            fill='tonexty',
-            fillcolor='rgba(0, 100, 80, 0.3)',
-            line=dict(color='rgb(0, 100, 80)')
-        ),
-        row=1, col=1
-    )
+    # # 元金と利息の積み上げグラフ
+    # fig.add_trace(
+    #     go.Scatter(
+    #         x=schedule_df['回数'],
+    #         y=schedule_df['元金'],
+    #         mode='lines',
+    #         name='元金',
+    #         fill='tonexty',
+    #         fillcolor='rgba(0, 100, 80, 0.3)',
+    #         line=dict(color='rgb(0, 100, 80)')
+    #     ),
+    #     row=1, col=1
+    # )
     
-    fig.add_trace(
-        go.Scatter(
-            x=schedule_df['回数'],
-            y=schedule_df['利息'],
-            mode='lines',
-            name='利息',
-            fill='tozeroy',
-            fillcolor='rgba(255, 100, 80, 0.3)',
-            line=dict(color='rgb(255, 100, 80)')
-        ),
-        row=1, col=1
-    )
+    # fig.add_trace(
+    #     go.Scatter(
+    #         x=schedule_df['回数'],
+    #         y=schedule_df['利息'],
+    #         mode='lines',
+    #         name='利息',
+    #         fill='tozeroy',
+    #         fillcolor='rgba(255, 100, 80, 0.3)',
+    #         line=dict(color='rgb(255, 100, 80)')
+    #     ),
+    #     row=1, col=1
+    # )
     
-    # 賞与返済がある場合は賞与返済も表示
-    if use_bonus:
-        fig.add_trace(
-            go.Scatter(
-                x=schedule_df['回数'],
-                y=schedule_df['賞与返済'],
-                mode='markers',
-                name='賞与返済',
-                marker=dict(color='rgb(255, 165, 0)', size=6),
-                showlegend=True
-            ),
-            row=1, col=1
-        )
+    # # 賞与返済がある場合は賞与返済も表示
+    # if use_bonus:
+    #     fig.add_trace(
+    #         go.Scatter(
+    #             x=schedule_df['回数'],
+    #             y=schedule_df['賞与返済'],
+    #             mode='markers',
+    #             name='賞与返済',
+    #             marker=dict(color='rgb(255, 165, 0)', size=6),
+    #             showlegend=True
+    #         ),
+    #         row=1, col=1
+    #     )
     
-    # 残高推移
-    fig.add_trace(
-        go.Scatter(
-            x=schedule_df['回数'],
-            y=schedule_df['残高'],
-            mode='lines',
-            name='残高',
-            line=dict(color='rgb(50, 50, 200)', width=2)
-        ),
-        row=2, col=1
-    )
+    # # 残高推移
+    # fig.add_trace(
+    #     go.Scatter(
+    #         x=schedule_df['回数'],
+    #         y=schedule_df['残高'],
+    #         mode='lines',
+    #         name='残高',
+    #         line=dict(color='rgb(50, 50, 200)', width=2)
+    #     ),
+    #     row=2, col=1
+    # )
     
-    fig.update_layout(
-        height=600,
-        title_text="返済シミュレーション",
-        showlegend=True
-    )
+    # fig.update_layout(
+    #     height=600,
+    #     title_text="返済シミュレーション",
+    #     showlegend=True
+    # )
     
-    fig.update_xaxes(title_text="返済回数（月）", row=2, col=1)
-    fig.update_yaxes(title_text="金額（円）", row=1, col=1)
-    fig.update_yaxes(title_text="残高（円）", row=2, col=1)
+    # fig.update_xaxes(title_text="返済回数（月）", row=2, col=1)
+    # fig.update_yaxes(title_text="金額（円）", row=1, col=1)
+    # fig.update_yaxes(title_text="残高（円）", row=2, col=1)
     
-    st.plotly_chart(fig, use_container_width=True)
+    # st.plotly_chart(fig, use_container_width=True)
     
     # 返済予定表の表示
     st.header("返済予定表")
